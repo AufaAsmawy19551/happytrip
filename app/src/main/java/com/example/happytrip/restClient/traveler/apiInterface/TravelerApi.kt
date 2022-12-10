@@ -1,4 +1,9 @@
 package com.example.happytrip.restClient.traveler.apiInterface
 
-interface TravelerApi : RegisterApi, AuthApi, ProfileApi{
+interface TravelerApi :
+    AuthApi,
+    HartakarunApi,
+    ProfileApi,
+    RegisterApi
+{
 }

@@ -4,6 +4,7 @@ import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartaka
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Query
 
 interface HartakarunApi {
     @Headers(value = [
@@ -11,5 +12,7 @@ interface HartakarunApi {
         "Content-type:application/json"
     ])
     @GET("api/traveler/hartakaruns")
-    fun listHartakarun(): Call<ListHartakarunResponse>
+    fun listHartakarun(
+        @Query("title") title: String? = null
+    ): Call<ListHartakarunResponse>
 }

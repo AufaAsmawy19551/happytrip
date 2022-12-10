@@ -20,31 +20,31 @@
 <!--        android:hint="password"/>-->
 
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"/>
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Login"/>
 
     <Button
-        android:id="@+id/btn_user"
+        android:id="@+id/btnUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="User"/>
 
     <Button
-        android:id="@+id/btn_refresh_token"
+        android:id="@+id/btnRefreshToken"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Refresh Token"/>
 
     <Button
-        android:id="@+id/btn_logout"
+        android:id="@+id/btnLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Logout"/>
