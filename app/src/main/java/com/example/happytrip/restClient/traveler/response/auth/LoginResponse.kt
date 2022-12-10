@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class LoginResponse {
     var success: Boolean? = null
-    var message: List<String>? = null
+    var message: ArrayList<String>? = null
     var user: Traveler? = null
     var token: String? = null
 

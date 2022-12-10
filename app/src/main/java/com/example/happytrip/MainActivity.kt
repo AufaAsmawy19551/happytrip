@@ -1,6 +1,7 @@
 package com.example.happytrip
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -11,6 +12,7 @@ import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
 import com.example.happytrip.restClient.traveler.response.auth.*
 import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartakarunResponse
+import com.example.happytrip.restClient.traveler.response.register.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +39,12 @@ class MainActivity : AppCompatActivity() {
         binding.btnUser.setOnClickListener{user()}
         binding.btnRefreshToken.setOnClickListener{refreshToken()}
         binding.btnLogout.setOnClickListener{logout()}
+        binding.btnHartakarun.setOnClickListener{goToHartakarun()}
+    }
+
+    fun goToHartakarun(){
+        val intent = Intent(this, HartakarunActivity::class.java)
+        startActivity(intent)
     }
 
     fun register(){
@@ -225,12 +233,8 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<ListHartakarunResponse>, response: Response<ListHartakarunResponse>) {
                         if (response.isSuccessful) {
                             val data = response.body()
-                            var listHartakarun: List<ListHartakarunResponse.Hartakarun>? = data?.data
-
-
 
                             Toast.makeText(getApplicationContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
-                            Log.e("token", TravelerResponseDTO.token.toString())
                         } else {
                             try {
                                 val jObjError = JSONObject(response.errorBody()!!.string())
