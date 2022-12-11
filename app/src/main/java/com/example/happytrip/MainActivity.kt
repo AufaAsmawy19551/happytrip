@@ -7,11 +7,13 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.happytrip.databinding.ActivityMainBinding
+import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
 import com.example.happytrip.restClient.traveler.response.auth.*
 import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartakarunResponse
+import com.example.happytrip.restClient.traveler.response.mission.ListMissionResponse
 import com.example.happytrip.restClient.traveler.response.register.RegisterResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,11 +42,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnRefreshToken.setOnClickListener{refreshToken()}
         binding.btnLogout.setOnClickListener{logout()}
         binding.btnHartakarun.setOnClickListener{goToHartakarun()}
-    }
-
-    fun goToHartakarun(){
-        val intent = Intent(this, HartakarunActivity::class.java)
-        startActivity(intent)
+        binding.btnMission.setOnClickListener{goToMission()}
     }
 
     fun register(){
@@ -216,11 +214,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             )
-
     }
 
 
-    fun listHartakarun() {
+    fun goToHartakarun() {
         TravelerRetrofit()
             .getRetroClientInstance()
             .create(TravelerApi::class.java)
@@ -234,6 +231,10 @@ class MainActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
+                            TravelerResponseDTO.hartakaruns = data?.data
+
+                            Navigator.changeActivity(this@MainActivity,HartakarunActivity::class.java)
+
                             Toast.makeText(getApplicationContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
                         } else {
                             try {
@@ -246,6 +247,41 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             )
+    }
 
+    fun goToMission() {
+        TravelerRetrofit()
+            .getRetroClientInstance()
+            .create(TravelerApi::class.java)
+            .listMission()
+            .enqueue(
+                object: Callback<ListMissionResponse> {
+                    override fun onFailure(call: Call<ListMissionResponse>, t: Throwable){
+                        Log.e("Error", t.message.toString())
+                    }
+                    override fun onResponse(call: Call<ListMissionResponse>, response: Response<ListMissionResponse>) {
+                        if (response.isSuccessful) {
+                            val data = response.body()
+
+                            TravelerResponseDTO.missions = data?.data
+
+                            for(mission in data?.data!!){
+                                Log.e("visitedWisata", mission?.visitedWisata.toString())
+                            }
+
+                            Navigator.changeActivity(this@MainActivity,MissionActivity::class.java)
+
+                            Toast.makeText(getApplicationContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
+                        } else {
+                            try {
+                                val jObjError = JSONObject(response.errorBody()!!.string())
+                                Toast.makeText(getApplicationContext(), jObjError.getJSONArray("message").get(0).toString(), Toast.LENGTH_LONG).show()
+                            } catch (e: Exception) {
+                                Toast.makeText(getApplicationContext(), e.message, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            )
     }
 }

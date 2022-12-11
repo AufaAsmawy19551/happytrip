@@ -1,7 +1,7 @@
 package com.example.happytrip.restClient.traveler.apiInterface
 
 import com.example.happytrip.restClient.traveler.response.mission.DetailMissionResponse
-import com.example.happytrip.restClient.traveler.response.wisata.ListWisataResponse
+import com.example.happytrip.restClient.traveler.response.mission.ListMissionResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -17,7 +17,7 @@ interface MissionApi {
     @GET("api/traveler/missions")
     fun listMission(
         @Query("title") title: String? = null
-    ): Call<ListWisataResponse>
+    ): Call<ListMissionResponse>
 
     @Headers(value = [
         "Accept: application/json",
