@@ -1,3 +1,8 @@
 # Default ignored files
+*
+!.gitignore
 /shelf/
 /workspace.xml
+/modules
+/modules/app
+/libraries
