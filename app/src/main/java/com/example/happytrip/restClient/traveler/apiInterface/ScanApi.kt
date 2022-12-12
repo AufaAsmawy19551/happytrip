@@ -9,13 +9,13 @@ import retrofit2.http.POST
 
 interface ScanApi {
 
-    @Headers(value = [
-        "Accept: application/json",
-        "Content-type:application/json"
-    ])
+//    @Headers(value = [
+//        "Accept: application/json",
+//        "Content-type:application/json"
+//    ])
     @FormUrlEncoded
     @POST("api/traveler/travelerScan")
     fun scan(
-        @Field("code") code: String
+        @Field("code") code: String,
     ): Call<ScanResponse>
 }

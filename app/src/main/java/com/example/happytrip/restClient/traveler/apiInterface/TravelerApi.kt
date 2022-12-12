@@ -12,6 +12,5 @@ interface TravelerApi :
     RatingReviewApi,
     RegisterApi,
     ScanApi,
-    WisataApi
-{
+    WisataApi {
 }

@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.azzamhanafi.happytrip.FirstFragment"
+        android:name="com.example.happytrip.fragment.FirstFragment"
         android:label="Home"
         tools:layout="@layout/fragment_first" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.azzamhanafi.happytrip.SecondFragment"
+        android:name="com.example.happytrip.fragment.SecondFragment"
         android:label="Mission"
         tools:layout="@layout/fragment_second" />
     <fragment
         android:id="@+id/thridFragment"
-        android:name="com.azzamhanafi.happytrip.ThridFragment"
+        android:name="com.example.happytrip.fragment.ThirdFragment"
         android:label="Scan"
-        tools:layout="@layout/fragment_thrid" />
+        tools:layout="@layout/fragment_third" />
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="com.azzamhanafi.happytrip.FourthFragment"
+        android:name="com.example.happytrip.fragment.FourthFragment"
         android:label="Voucher"
         tools:layout="@layout/fragment_fourth" />
     <fragment
         android:id="@+id/fifthFragment"
-        android:name="com.azzamhanafi.happytrip.FifthFragment"
+        android:name="com.example.happytrip.fragment.FifthFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_fifth" />
 </navigation>

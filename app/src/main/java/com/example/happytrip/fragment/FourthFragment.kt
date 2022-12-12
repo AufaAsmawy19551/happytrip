@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.happytrip.HartakarunActivity
 import com.example.happytrip.adapter.HartakarunAdapter
+import com.example.happytrip.databinding.FragmentFourthBinding
 import com.example.happytrip.databinding.FragmentSecondBinding
 import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
@@ -33,7 +34,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SecondFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SecondFragment : Fragment() {
+class FourthFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,11 +45,9 @@ class SecondFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
     }
 
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentFourthBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -58,8 +57,7 @@ class SecondFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentFourthBinding.inflate(inflater, container, false)
         val view = binding.root
 
         listHartakrun()
