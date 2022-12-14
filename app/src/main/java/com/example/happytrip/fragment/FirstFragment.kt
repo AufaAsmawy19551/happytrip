@@ -9,10 +9,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.happytrip.R
+import com.example.happytrip.adapter.MissionAdapter
 import com.example.happytrip.databinding.FragmentFirstBinding
+import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
+import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
+import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
+import com.example.happytrip.restClient.traveler.response.mission.ListMissionResponse
+import com.example.happytrip.restClient.traveler.response.wisata.ListWisataResponse
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.*
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +53,6 @@ class FirstFragment : Fragment(), OnMapReadyCallback {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     private var _binding: FragmentFirstBinding? = null
@@ -71,41 +86,91 @@ class FirstFragment : Fragment(), OnMapReadyCallback {
                 .build()
 
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(googlePlex), 10000, null)
+//            var icon = ResourcesCompat.getDrawable(requireActivity().resources, androidx.loader.R.drawable.notification_icon_background)
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-7.7628136, 110.1161626))
-                    .title("Sungai Mudal")
-                    .snippet("0/2")
-            )
+            TravelerRetrofit()
+                .getRetroClientInstance()
+                .create(TravelerApi::class.java)
+                .listWisata()
+                .enqueue(
+                    object : Callback<ListWisataResponse> {
+                        override fun onFailure(call: Call<ListWisataResponse>, t: Throwable) {
+                            Log.e("Error", t.message.toString())
+                        }
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-8.02539498, 110.32875584))
-                    .title("Pantai Parangtritis")
-                    .snippet("0/4")
-            )
+                        override fun onResponse(call: Call<ListWisataResponse>, response: Response<ListWisataResponse>) {
+                            if (response.isSuccessful) {
+                                val data = response.body()
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-7.7926455, 110.365846))
-                    .title("Mailoboro")
-                    .snippet("0/5")
-            )
+                                TravelerResponseDTO.listWisata = data?.data
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-7.8458407, 110.4798457))
-                    .title("Bukit Bintang")
-                    .snippet("0/3")
-            )
+                                for (wisata: ListWisataResponse.Wisata in TravelerResponseDTO.listWisata!!) {
+                                    var location = wisata.location?.split(",")
 
-            mMap.addMarker(
-                MarkerOptions()
-                    .position(LatLng(-7.75074552, 110.49519205))
-                    .title("Candi Prambanan")
-                    .snippet("0/4")
-            )
+                                    if(wisata.isVisited!!){
+                                        mMap.addMarker(
+                                            MarkerOptions()
+                                                .position(LatLng(location!![0].toDouble(), location!![1].toDouble()))
+                                                .title(wisata.title)
+                                                .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_location_blue))
+                                        )
+                                    }else{
+                                        mMap.addMarker(
+                                            MarkerOptions()
+                                                .position(LatLng(location!![0].toDouble(), location!![1].toDouble()))
+                                                .title(wisata.title)
+                                                .icon(bitmapDescriptorFromVector(requireContext(), R.drawable.ic_location_red))
+                                        )
+                                    }
+                                }
+
+                                Toast.makeText(requireContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
+                            } else {
+                                try {
+                                    val jObjError = JSONObject(response.errorBody()!!.string())
+                                    Toast.makeText(requireContext(), jObjError.getJSONArray("message").get(0).toString(), Toast.LENGTH_LONG).show()
+                                } catch (e: Exception) {
+                                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        }
+                    }
+                )
+
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-7.7628136, 110.1161626))
+//                    .title("Sungai Mudal")
+//                    .snippet("0/2")
+//            )
+//
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-8.02539498, 110.32875584))
+//                    .title("Pantai Parangtritis")
+//                    .snippet("0/4")
+//            )
+//
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-7.7926455, 110.365846))
+//                    .title("Mailoboro")
+//                    .snippet("0/5")
+//            )
+//
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-7.8458407, 110.4798457))
+//                    .title("Bukit Bintang")
+//                    .snippet("0/3")
+//            )
+//
+//            mMap.addMarker(
+//                MarkerOptions()
+//                    .position(LatLng(-7.75074552, 110.49519205))
+//                    .title("Candi Prambanan")
+//                    .snippet("0/4")
+//            )
         }
 
         return view
@@ -114,8 +179,7 @@ class FirstFragment : Fragment(), OnMapReadyCallback {
     private fun bitmapDescriptorFromVector(context: Context?, vectorResId: Int): BitmapDescriptor {
         val vectorDrawable = ContextCompat.getDrawable(requireContext(), vectorResId)
         vectorDrawable!!.setBounds(0, 0, vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight)
-        val bitmap =
-            Bitmap.createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
@@ -125,6 +189,67 @@ class FirstFragment : Fragment(), OnMapReadyCallback {
         super.onDestroyView()
         _binding = null
     }
+
+        fun listWisata() {
+            TravelerRetrofit()
+                .getRetroClientInstance()
+                .create(TravelerApi::class.java)
+                .listWisata()
+                .enqueue(
+                    object : Callback<ListWisataResponse> {
+                        override fun onFailure(call: Call<ListWisataResponse>, t: Throwable) {
+                            Log.e("Error", t.message.toString())
+                        }
+
+                        override fun onResponse(
+                            call: Call<ListWisataResponse>,
+                            response: Response<ListWisataResponse>
+                        ) {
+                            if (response.isSuccessful) {
+                                val data = response.body()
+
+                                TravelerResponseDTO.listWisata = data?.data
+
+                                for (wisata: ListWisataResponse.Wisata in TravelerResponseDTO.listWisata!!) {
+
+                                    var location = wisata.location?.split(",")
+                                    mMap.addMarker(
+                                        MarkerOptions()
+                                            .position(
+                                                LatLng(
+                                                    location!![0].toDouble(),
+                                                    location!![1].toDouble()
+                                                )
+                                            )
+                                            .title(wisata.title)
+                                    )
+
+                                    Log.e("latitide", location!![0].toDouble().toString())
+                                    Log.e("longitue", location!![1].toDouble().toString())
+                                }
+
+                                Toast.makeText(
+                                    requireContext(),
+                                    data?.message?.get(0).toString(),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            } else {
+                                try {
+                                    val jObjError = JSONObject(response.errorBody()!!.string())
+                                    Toast.makeText(
+                                        requireContext(),
+                                        jObjError.getJSONArray("message").get(0).toString(),
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                } catch (e: Exception) {
+                                    Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG)
+                                        .show()
+                                }
+                            }
+                        }
+                    }
+                )
+        }
 
     companion object {
         /**

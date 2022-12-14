@@ -19,7 +19,7 @@ class MissionActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        var rvAdapter = TravelerResponseDTO.missions?.let { MissionAdapter(it) }
+        var rvAdapter = TravelerResponseDTO.listMission?.let { MissionAdapter(it) }
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         binding.rvMission.setLayoutManager(layoutManager)

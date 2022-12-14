@@ -20,7 +20,7 @@ class HartakarunActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        var rvAdapter = TravelerResponseDTO.hartakaruns?.let { HartakarunAdapter(it) }
+        var rvAdapter = TravelerResponseDTO.listHartakarun?.let { HartakarunAdapter(it) }
         Log.e("onCreate, adapter", rvAdapter.toString())
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)

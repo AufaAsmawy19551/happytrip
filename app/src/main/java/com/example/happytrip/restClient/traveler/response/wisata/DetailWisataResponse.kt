@@ -32,5 +32,9 @@ class DetailWisataResponse {
             var point: Int? = null
             var visited: Boolean? = null
         }
+
+        override fun toString(): String {
+            return "Wisata(id=$id, title=$title, description=$description, location=$location, hargaTiket=$hargaTiket, point=$point, denah=$denah, video=$video, visit=$visit, rating=$rating, scanPoints=$scanPoints)"
+        }
     }
 }

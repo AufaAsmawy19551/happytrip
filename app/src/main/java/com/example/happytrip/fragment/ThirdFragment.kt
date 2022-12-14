@@ -13,12 +13,17 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.example.happytrip.DetailWisataActivity
+import com.example.happytrip.MissionActivity
 import com.example.happytrip.databinding.FragmentThirdBinding
+import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
 import com.example.happytrip.restClient.traveler.response.auth.LoginResponse
+import com.example.happytrip.restClient.traveler.response.mission.ListMissionResponse
 import com.example.happytrip.restClient.traveler.response.scan.ScanResponse
+import com.example.happytrip.restClient.traveler.response.wisata.DetailWisataResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -124,6 +129,40 @@ class ThirdFragment : Fragment() {
                     override fun onResponse(call: Call<ScanResponse>, response: Response<ScanResponse>) {
                         if (response.isSuccessful) {
                             val data = response.body()
+
+                            Toast.makeText(requireContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
+
+                            data?.data?.wisataId?.let { goToWisataDetail(it) }
+                        } else {
+                            try {
+                                val jObjError = JSONObject(response.errorBody()!!.string())
+                                Toast.makeText(requireContext(), jObjError.getJSONArray("message").get(0).toString(), Toast.LENGTH_LONG).show()
+                            } catch (e: Exception) {
+                                Toast.makeText(requireContext(), e.message, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            )
+    }
+
+    fun goToWisataDetail(id: Int) {
+        TravelerRetrofit()
+            .getRetroClientInstance()
+            .create(TravelerApi::class.java)
+            .detailWisata(id)
+            .enqueue(
+                object: Callback<DetailWisataResponse> {
+                    override fun onFailure(call: Call<DetailWisataResponse>, t: Throwable){
+                        Log.e("Error", t.message.toString())
+                    }
+                    override fun onResponse(call: Call<DetailWisataResponse>, response: Response<DetailWisataResponse>) {
+                        if (response.isSuccessful) {
+                            val data = response.body()
+
+                            TravelerResponseDTO.detailWisata = data?.data
+
+                            Navigator.changeActivity(requireContext(), DetailWisataActivity::class.java)
 
                             Toast.makeText(requireContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
                         } else {

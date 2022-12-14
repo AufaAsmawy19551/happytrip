@@ -9,13 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.happytrip.adapter.HartakarunAdapter
 import com.example.happytrip.adapter.MissionAdapter
 import com.example.happytrip.databinding.FragmentSecondBinding
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
-import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartakarunResponse
 import com.example.happytrip.restClient.traveler.response.mission.ListMissionResponse
 import org.json.JSONObject
 import retrofit2.Call
@@ -83,9 +81,9 @@ class SecondFragment : Fragment() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
-                            TravelerResponseDTO.missions = data?.data
+                            TravelerResponseDTO.listMission = data?.data
 
-                            var rvAdapter = TravelerResponseDTO.missions?.let { MissionAdapter(it) }
+                            var rvAdapter = TravelerResponseDTO.listMission?.let { MissionAdapter(it) }
 
                             val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireContext())
                             binding.rvMission.setLayoutManager(layoutManager)
