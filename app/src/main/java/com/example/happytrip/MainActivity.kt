@@ -10,10 +10,12 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.happytrip.databinding.ActivityMainBinding
+import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
 import com.example.happytrip.restClient.traveler.response.auth.LoginResponse
+import com.example.happytrip.restClient.traveler.response.auth.UserResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         TravelerResponseDTO.token = getSharedPreferences("DATA", Context.MODE_PRIVATE).getString("token", null)
-        login()
+        isUser()
         Log.e("run", "From onCreate MainActivity")
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    @Synchronized
     fun login() {
         val email = "aufa@gmail.com"
         val password = "password"
@@ -82,6 +83,35 @@ class MainActivity : AppCompatActivity() {
                                 Toast.makeText(getApplicationContext(), jObjError.getJSONArray("message").get(0).toString(), Toast.LENGTH_LONG).show()
                             } catch (e: Exception) {
                                 Toast.makeText(getApplicationContext(), e.message, Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            )
+    }
+
+    fun isUser() {
+        TravelerRetrofit()
+            .getRetroClientInstance()
+            .create(TravelerApi::class.java)
+            .authUser()
+            .enqueue(
+                object: Callback<UserResponse> {
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable){
+                        Log.e("Error", t.message.toString())
+                    }
+                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                        if (response.isSuccessful) {
+                            val data = response.body()
+                            Toast.makeText(getApplicationContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
+                        } else {
+                            try {
+                                val jObjError = JSONObject(response.errorBody()!!.string())
+                                Toast.makeText(getApplicationContext(), jObjError.getJSONArray("message").get(0).toString(), Toast.LENGTH_LONG).show()
+                                Navigator.changeActivity(this@MainActivity, LoginActivity::class.java)
+                            } catch (e: Exception) {
+                                Toast.makeText(getApplicationContext(), e.message, Toast.LENGTH_LONG).show()
+                                Navigator.changeActivity(this@MainActivity, LoginActivity::class.java)
                             }
                         }
                     }
