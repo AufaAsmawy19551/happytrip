@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.happytrip.HartakarunActivity
 import com.example.happytrip.adapter.HartakarunAdapter
 import com.example.happytrip.databinding.FragmentFourthBinding
-import com.example.happytrip.databinding.FragmentSecondBinding
-import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
@@ -84,9 +81,9 @@ class FourthFragment : Fragment() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
-                            TravelerResponseDTO.hartakaruns = data?.data
+                            TravelerResponseDTO.listHartakarun = data?.data
 
-                            var rvAdapter = TravelerResponseDTO.hartakaruns?.let { HartakarunAdapter(it) }
+                            var rvAdapter = TravelerResponseDTO.listHartakarun?.let { HartakarunAdapter(it) }
                             Log.e("onCreate, adapter", rvAdapter.toString())
 
                             val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireContext())

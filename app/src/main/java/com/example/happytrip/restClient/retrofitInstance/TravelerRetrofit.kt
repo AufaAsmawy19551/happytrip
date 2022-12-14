@@ -1,6 +1,5 @@
 package com.example.happytrip.restClient.retrofitInstance
 
-import com.example.happytrip.config.Config
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

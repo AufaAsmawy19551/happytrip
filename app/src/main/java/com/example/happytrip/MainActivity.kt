@@ -25,12 +25,13 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        TravelerResponseDTO.token = getSharedPreferences("DATA", Context.MODE_PRIVATE).getString("token", null)
+        login()
         Log.e("run", "From onCreate MainActivity")
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        login()
 
         val bottomNavigationView = binding.bottomNavigationView
         val navController = findNavController(R.id.fragment)
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @Synchronized
     fun login() {
         val email = "aufa@gmail.com"
         val password = "password"

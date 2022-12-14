@@ -233,7 +233,7 @@ class TestActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
-                            TravelerResponseDTO.hartakaruns = data?.data
+                            TravelerResponseDTO.listHartakarun = data?.data
 
                             Navigator.changeActivity(this@TestActivity,HartakarunActivity::class.java)
 
@@ -265,7 +265,7 @@ class TestActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
-                            TravelerResponseDTO.missions = data?.data
+                            TravelerResponseDTO.listMission = data?.data
 
                             for(mission in data?.data!!){
                                 Log.e("visitedWisata", mission?.visitedWisata.toString())
