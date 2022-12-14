@@ -2,4 +2,23 @@
     <string name="app_name">Happytrip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lewati_perkenalan">LEWATI PERKENALAN</string>
+    <string name="lanjutkan">LANJUTKAN</string>
+    <string name="destinasi">Destinasi</string>
+    <string name="destinasi_desc">Ketahui destinasi wisata di sekitarmu</string>
+    <string name="scan">Scan</string>
+    <string name="scan_desc">lakukan scan dan dapatkan poin</string>
+    <string name="poin">Poin</string>
+    <string name="poin_desc">kumpulkan pisang dan tukarkan\ndengan berbagai hadiah!</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_in">Sign in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="masuk_akun">SIGN IN</string>
+    <string name="daftar">REGISTER</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="nama">Nama</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="email">Email</string>
 </resources>
