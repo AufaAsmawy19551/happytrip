@@ -3,6 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1395" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable-v24/oval_blue.xml" value="0.252" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable-v24/shape_rectangle_new.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_home.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1395" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1395" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_location_visited.xml" value="0.1395" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_mission.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_profile.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_scan.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_user_location.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/drawable/ic_voucher.xml" value="0.1895" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_detail_hartakarun.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_detail_mission.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_detail_wisata.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_hartakarun.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_login.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_mission.xml" value="0.19927536231884058" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_on_boarding.xml" value="0.20199275362318841" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_setting.xml" value="0.2" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/layout/activity_voucher_detail.xml" value="0.24635416666666668" />
+        <entry key="..\:/Kuliah/Semester 5/Pengembangan Aplikasi Bergerak/ProjekAndroid(Repo)/happytrip/app/src/main/res/menu/bottom_menu.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable-v24/ic_baseline_arrow_back_24.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable-v24/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1535" />

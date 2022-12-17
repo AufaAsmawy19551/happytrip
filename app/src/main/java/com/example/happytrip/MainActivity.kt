@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.fifthFragment
             )
         )
-
+        //apabila ingin menghilangkan appbar(title) maka kode dibawah harus di comment
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
 

@@ -7,10 +7,10 @@
         </shape>
     </item>
     <item
-        android:bottom="100dp"
+        android:bottom="0dp"
         android:left="-100dp"
         android:right="-100dp"
-        android:top="-400dp">
+        android:top="-300dp">
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="oval">
             <solid android:color="@color/blue" />
