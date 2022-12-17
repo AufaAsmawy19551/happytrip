@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         TravelerResponseDTO.token = getSharedPreferences("DATA", Context.MODE_PRIVATE).getString("token", null)
+//        login()
         isUser()
         Log.e("run", "From onCreate MainActivity")
         super.onCreate(savedInstanceState)
