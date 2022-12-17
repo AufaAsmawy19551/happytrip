@@ -9,10 +9,18 @@ class ListWisataResponse {
     var message: ArrayList<String>? = null
     var data: ArrayList<Wisata>? = null
 
-    class Wisata{
+    class Wisata {
         var id: Int? = null
         var title: String? = null
         var location: String? = null
+        var rating: Double? = null
+        @SerializedName("harga_tiket")
+        @Expose
+        var hargaTiket: Int? = null
+        var visit: Int? = null
+        var image: String? = null
+        var scanPoint: Int? = null
+        var scanned: Int? = null
         @SerializedName("is_visited")
         @Expose
         var isVisited: Boolean? = null

@@ -15,6 +15,7 @@
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable/ic_location_red.xml" value="0.113" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable/ic_profile.xml" value="0.1535" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable/ic_scan.xml" value="0.223" />
+        <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable/ic_user_location.xml" value="0.247" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/drawable/ic_voucher.xml" value="0.1535" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_detail_hartakarun.xml" value="0.153125" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_detail_mission.xml" value="0.36666666666666664" />
@@ -23,11 +24,12 @@
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_mission.xml" value="0.14175724637681159" />
-        <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_register.xml" value="0.2876712328767123" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/activity_test.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/card_hartakarun.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/card_mission.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/card_wisata.xml" value="0.5" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/fragment_fifth.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/fragment_first.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/Administrator/Documents/AndroidStudioProject/Happytrip/app/src/main/res/layout/fragment_fourth.xml" value="0.14175724637681159" />
@@ -38,12 +40,7 @@
       </map>
     </option>
   </component>
-<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
-=======
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
->>>>>>> 7c5b555f21fc0f0c99a2b9370e614c3785425091
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
