@@ -21,4 +21,9 @@
     <string name="nama">Nama</string>
     <string name="password_confirmation">Password Confirmation</string>
     <string name="email">Email</string>
+    <string name="voucher_name">Gratis Biaya Masuk Gembira Loka</string>
+    <string name="voucher_price">Harga Voucher</string>
+    <string name="description">Deskripsi</string>
+    <string name="txt_detail_voucher">Voucher Details</string>
+    <string name="claim">CLAIM</string>
 </resources>
