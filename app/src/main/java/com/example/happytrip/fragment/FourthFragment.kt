@@ -57,6 +57,8 @@ class FourthFragment : Fragment() {
         _binding = FragmentFourthBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.tvPoint.text = TravelerResponseDTO.traveler?.currentPoint.toString()
+
         listHartakrun()
 
         return view

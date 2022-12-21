@@ -104,6 +104,7 @@ class MainActivity : AppCompatActivity() {
                     override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                         if (response.isSuccessful) {
                             val data = response.body()
+                            TravelerResponseDTO.traveler = data?.user
                             Toast.makeText(getApplicationContext(), data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
                         } else {
                             try {
