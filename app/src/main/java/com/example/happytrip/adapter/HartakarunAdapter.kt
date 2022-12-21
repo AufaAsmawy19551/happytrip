@@ -4,7 +4,11 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.happytrip.DetailHartakarunActivity
 import com.example.happytrip.databinding.CardHartakarunBinding
+import com.example.happytrip.helper.Navigator
+import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
+import com.example.happytrip.restClient.traveler.response.hartakarun.DetailHartakarunResponse
 import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartakarunResponse
 
 class HartakarunAdapter(
@@ -19,19 +23,19 @@ class HartakarunAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (list[position].redeemed!!)
         holder.binding.apply {
             with(list[position]){
                 tvTitle.text = this.title
-                tvDescription.text = this.description
+//                tvDescription.text = this.description
                 tvPoint.text = this.point.toString()
             }
         }
 
-//        holder.itemView.setOnClickListener {
-//            val intent = Intent(it.context, DetailHartakarunActivity::class.java)
-//            intent.putExtra(DetailHartakarunActivity.RECIPES_DATA, list[position])
-//            it.context.startActivity(intent)
-//        }
+        holder.itemView.setOnClickListener {
+            TravelerResponseDTO.detailHartakarun = list[position]
+            Navigator.changeActivity(it.context, DetailHartakarunActivity::class.java)
+        }
     }
 
     override fun getItemCount(): Int {

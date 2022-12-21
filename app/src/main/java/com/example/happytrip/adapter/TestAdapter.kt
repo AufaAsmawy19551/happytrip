@@ -22,7 +22,7 @@ class TestAdapter (
         with(holder){
             with(list[position]){
                 binding.tvTitle.text = this.title
-                binding.tvDescription.text = this.description
+//                binding.tvDescription.text = this.description
                 binding.tvPoint.text = this.point.toString()
             }
         }
