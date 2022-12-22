@@ -21,14 +21,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Voucher"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,28 +35,26 @@
         android:id="@+id/ivPisang"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginStart="170dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
         android:contentDescription="@string/app_name"
         android:padding="5dp"
         android:src="@drawable/pisang"
-        app:layout_constraintStart_toEndOf="@+id/tvHVoucher"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/tvPoint"
+        app:layout_constraintTop_toTopOf="@id/tvPoint" />
 
     <TextView
         android:id="@+id/tvPoint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         android:text="30"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/ivPisang"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/tvHVoucher" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvHartakarun"
