@@ -57,6 +57,8 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.tvPoint.text = TravelerResponseDTO.traveler?.currentPoint.toString()
+
         listMission()
 
         return view

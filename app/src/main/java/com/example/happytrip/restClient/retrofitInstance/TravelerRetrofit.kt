@@ -21,7 +21,7 @@ class TravelerRetrofit {
         val gson = GsonBuilder().setLenient().create()
         return Retrofit.Builder()
             .client(client)
-            .baseUrl(Config.baseURL)
+            .baseUrl(Config.baseUrl)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }

@@ -37,6 +37,8 @@ class MissionAdapter (
             with(list[position]){
                 tvTitle.text = this.title
                 tvPoint.text = this.point.toString()
+                pbProgress.max = this.wisata!!
+                pbProgress.progress = this.visitedWisata!!
                 tvProgress.text = "${this.visitedWisata.toString()}/${this.wisata.toString()}"
             }
         }
