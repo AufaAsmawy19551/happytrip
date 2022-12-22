@@ -23,7 +23,6 @@ class HartakarunAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (list[position].redeemed!!)
         holder.binding.apply {
             with(list[position]){
                 tvTitle.text = this.title

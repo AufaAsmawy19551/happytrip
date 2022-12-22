@@ -1,24 +1,23 @@
 package com.example.happytrip
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.happytrip.adapter.HartakarunAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.happytrip.databinding.ActivityDetailHartakarunBinding
 import com.example.happytrip.helper.Navigator
 import com.example.happytrip.restClient.responseDTO.TravelerResponseDTO
 import com.example.happytrip.restClient.retrofitInstance.TravelerRetrofit
 import com.example.happytrip.restClient.traveler.apiInterface.TravelerApi
 import com.example.happytrip.restClient.traveler.response.claimHartakarun.ClaimHartakarunResponse
-import com.example.happytrip.restClient.traveler.response.hartakarun.ListHartakarunResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.lang.Exception
+
 
 class DetailHartakarunActivity : AppCompatActivity() {
 
@@ -55,9 +54,20 @@ class DetailHartakarunActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
                             val data = response.body()
 
-                            Navigator.changeActivity(this@DetailHartakarunActivity, MissionActivity::class.java)
+                            TravelerResponseDTO.listHartakarun = data?.data
 
                             Toast.makeText(this@DetailHartakarunActivity, data?.message?.get(0).toString(), Toast.LENGTH_LONG).show()
+
+//                            val manager: FragmentManager = supportFragmentManager
+//                            val transaction: FragmentTransaction = manager.beginTransaction()
+//                            transaction.replace(
+//                                R.id.fragment,
+//                                Fragment(R.layout.fragment_fourth)
+//                            )
+//                            transaction.addToBackStack(null)
+//                            transaction.commit()
+//                            this@DetailHartakarunActivity.onBackPressed()
+                            Navigator.changeActivity(this@DetailHartakarunActivity, MainActivity::class.java)
                         } else {
                             try {
                                 val jObjError = JSONObject(response.errorBody()!!.string())
